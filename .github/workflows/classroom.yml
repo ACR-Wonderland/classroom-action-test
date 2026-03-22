@@ -1,0 +1,22 @@
+name: Compose test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  grading:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]' && github.actor != 'ArthurCRodrigues'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Runs docker compose
+        uses: ACR-Wonderland/docker-compose-action-test@v1 
