@@ -56,21 +56,22 @@ async def main():
     that runs by entrypoint.sh script with all arguments passed to it.
     """
     try:
-        print('Iniciou Main.py')
+        print("Iniciou Main.py")
         args = parser.parse_args()
         print("Parsed arguments:")
         for key, value in vars(args).items():
             print(f"{key}: {value}")
 
-        print('Encerrou Main.py')
+        print("Encerrou Main.py")
     except ValueError as e:
         logger.error("Invalid value provided: %s", e)
+        raise SystemExit(1) from e
     except SystemExit as e:
         logger.critical(e)
+        raise SystemExit(1) from e
     except Exception as e:
         logger.error(e, exc_info=True)
-    finally:
-        raise SystemExit(1)
+        raise SystemExit(1) from e
 
 
 if __name__ == "__main__":

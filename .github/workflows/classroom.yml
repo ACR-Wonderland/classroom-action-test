@@ -13,10 +13,14 @@ jobs:
   grading:
     permissions: write-all
     runs-on: ubuntu-latest
-    if: github.actor != 'github-classroom[bot]' && github.actor != 'ArthurCRodrigues'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Runs docker compose
-        uses: ACR-Wonderland/classroom-action-test
+      - name: Run classroom action
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          template_preset: "python"
+          feedback-type: "default"
+          include-feedback: "false"
