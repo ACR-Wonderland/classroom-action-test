@@ -19,4 +19,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Runs docker compose
-        uses: ACR-Wonderland/docker-compose-action-test@v1 
+        uses: ACR-Wonderland/classroom-action-test
