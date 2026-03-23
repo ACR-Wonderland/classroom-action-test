@@ -6,24 +6,23 @@ description: "An autograding tool for GitHub Classroom. flexible,extensive,consi
 # These are mapped to the arguments in the `runs` section below.
 inputs:
   github-token:
-    description: >
-      GitHub token for API access. Defaults to the token provided by GitHub Actions.
+    description: "GitHub token for API access. Defaults to the token provided by GitHub Actions."
     required: false
     default: ${{ github.token }}
   template-preset:
     description: 'Defines the set of grading rules and point values to apply. To create your own grading preset, use "custom".'
     required: true
   feedback-type:
-    description: 'The type or style of feedback to provide to the student (e.g., summary, detailed).'
+    description: "The type or style of feedback to provide to the student (e.g., summary, detailed)."
     required: true
   custom-template:
     description: 'Optional custom grading template in JSON format. Required if template_preset is set to "custom".'
     required: false
   openai-key:
-    description: 'OpenAI API key for AI feedback. REQUIRED for AI feedback mode in GitHub Actions.'
+    description: "OpenAI API key for AI feedback. REQUIRED for AI feedback mode in GitHub Actions."
     required: false
   app-token:
-    description: 'The application token for the autograder service.'
+    description: "The application token for the autograder service."
     required: false
   include-feedback:
     description: 'Whether to include/generate feedback. Use "true" or "false". Defaults to false.'
