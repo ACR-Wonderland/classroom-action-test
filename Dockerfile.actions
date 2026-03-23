@@ -13,11 +13,11 @@ COPY . .
 RUN ls -a
 
 # 7. Install Python dependencies from the available requirements file
-RUN pip install --no-cache-dir -r /app/github_action/requirements.txt
+RUN pip install --no-cache-dir -r /github_action/requirements.txt
 
 # 8. Make the repository entrypoint executable
-RUN chmod +x /app/github_action/entrypoint.sh
+RUN chmod +x /github_action/entrypoint.sh
 
 # 9. Set the entrypoint for the container
-ENTRYPOINT ["/app/github_action/entrypoint.sh"]
+ENTRYPOINT ["/github_action/entrypoint.sh"]
 
