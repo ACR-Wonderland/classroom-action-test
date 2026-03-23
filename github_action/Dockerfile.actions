@@ -13,7 +13,7 @@ RUN apt-get update && \
 
 
 # 4. Set the working directory for the rest of the build
-WORKDIR /app
+# WORKDIR /app
 
 # 5. Copy the rest of your application code
 COPY . .
@@ -21,21 +21,10 @@ COPY . .
 RUN ls
 
 # 6. Expose a stable /github_action path regardless of build context
-RUN if [ -d /app/github_action ]; then \
-            ln -s /app/github_action /github_action; \
-        else \
-            ln -s /app /github_action; \
-        fi
+RUN ln -s /app /
 
 # 7. Install Python dependencies from the available requirements file
-RUN if [ -f /app/requirements.txt ]; then \
-            pip install --no-cache-dir -r /app/requirements.txt; \
-        elif [ -f /github_action/requirements.txt ]; then \
-            pip install --no-cache-dir -r /github_action/requirements.txt; \
-        else \
-            echo "Error: requirements.txt not found" >&2; \
-            exit 1; \
-        fi
+RUN pip install --no-cache-dir -r /requirements.txt
 
 # 8. Make the repository entrypoint executable
 RUN chmod +x /github_action/entrypoint.sh
