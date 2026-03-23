@@ -19,20 +19,11 @@ WORKDIR /app
 COPY . .
 
 # 6. Install Python dependencies from the available requirements file
-RUN if [ -f /app/requirements.txt ]; then \
-            echo "Achou em /app" >&2; \
-            pip install --no-cache-dir -r /app/requirements.txt; \
-        elif [ -f /app/github_action/requirements.txt ]; then \
-            echo "Achou em /app/github_action" >&2; \
-            pip install --no-cache-dir -r /app/github_action/requirements.txt; \
-        else \
-            echo "Error: requirements.txt not found in /app or /app/github_action" >&2; \
-            exit 1; \
-        fi
+RUN  pip install --no-cache-dir -r /app/requirements.txt
 
 # 8. Make the repository entrypoint executable
-RUN chmod +x /app/github_action/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # 9. Set the entrypoint for the container
-ENTRYPOINT ["/app/github_action/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
