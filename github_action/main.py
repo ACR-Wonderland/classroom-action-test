@@ -8,6 +8,8 @@ with the autograder workflow to process student submissions and generate feedbac
 import logging
 import asyncio
 from argparse import ArgumentParser
+from autograder.another import AnotherOut
+from .another import AnotherIn
 
 logger = logging.getLogger(__name__)
 
@@ -57,6 +59,8 @@ async def main():
     """
     try:
         print("Iniciou Main.py")
+        AnotherIn()
+        AnotherOut()
         args = parser.parse_args()
         print("Parsed arguments:")
         for key, value in vars(args).items():

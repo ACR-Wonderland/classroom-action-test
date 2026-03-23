@@ -13,17 +13,17 @@ RUN apt-get update && \
 
 
 # 4. Set the working directory for the rest of the build
-WORKDIR /app
+# WORKDIR /app
 
 # 5. Copy the rest of your application code
-COPY . .
+# COPY . .
 
 # 6. Install Python dependencies from the available requirements file
-RUN  pip install --no-cache-dir -r /app/requirements.txt
+RUN  pip install --no-cache-dir -r /requirements.txt
 
 # 8. Make the repository entrypoint executable
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /github_action/entrypoint.sh
 
 # 9. Set the entrypoint for the container
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/github_action/entrypoint.sh"]
 
