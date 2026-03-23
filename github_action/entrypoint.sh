@@ -36,7 +36,7 @@ fi
 args=(
     "python"
     "-m"
-    "github_action.main"
+    "main"
     "--github-token" "$GITHUB_TOKEN"
     "--template-preset" "$TEMPLATE_PRESET"
     "--student-name" "$GITHUB_ACTOR"
