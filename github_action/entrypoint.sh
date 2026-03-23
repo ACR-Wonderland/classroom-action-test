@@ -25,7 +25,7 @@ fi
 if [[ -z "$OPENAI_KEY" ]]; then
   echo "aaaa"
 fi
-cd /app
+cd /github_action
 
 if [[ -z "$OPENAI_KEY" ]]; then
   echo "aaaa"
