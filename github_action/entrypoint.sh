@@ -23,20 +23,17 @@ if [[ -z "$GITHUB_ACTOR" ]]; then
   exit 1
 fi
 if [[ -z "$OPENAI_KEY" ]]; then
-  echo "aaaa"
+  echo "OPENAI KEY defined"
 fi
-cd /github_action
+cd /app
 
-if [[ -z "$OPENAI_KEY" ]]; then
-  echo "aaaa"
-fi
 
 # --- 2. Dynamically Build Command Arguments ---
 # Initialize a bash array with the base command and the required arguments.
 args=(
     "python"
     "-m"
-    "main"
+    "github_action.main"
     "--github-token" "$GITHUB_TOKEN"
     "--template-preset" "$TEMPLATE_PRESET"
     "--student-name" "$GITHUB_ACTOR"

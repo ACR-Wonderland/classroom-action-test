@@ -8,7 +8,7 @@ with the autograder workflow to process student submissions and generate feedbac
 import logging
 import asyncio
 from argparse import ArgumentParser
-from autograder.another import AnotherOut
+from autograder.another_grader import AnotherOut
 from .another import AnotherIn
 
 logger = logging.getLogger(__name__)

@@ -13,22 +13,20 @@ RUN apt-get update && \
 
 
 # 4. Set the working directory for the rest of the build
-# WORKDIR /app
+WORKDIR /app
 
 # 5. Copy the rest of your application code
-COPY . .
+COPY . /github_action
+COPY . /autograder
 
-RUN ls
-
-# 6. Expose a stable /github_action path regardless of build context
-RUN ln -s /app /
+RUN ls -a
 
 # 7. Install Python dependencies from the available requirements file
-RUN pip install --no-cache-dir -r /requirements.txt
+RUN pip install --no-cache-dir -r /app/github_action/requirements.txt
 
 # 8. Make the repository entrypoint executable
-RUN chmod +x /github_action/entrypoint.sh
+RUN chmod +x /app/github_action/entrypoint.sh
 
 # 9. Set the entrypoint for the container
-ENTRYPOINT ["/github_action/entrypoint.sh"]
+ENTRYPOINT ["/app/github_action/entrypoint.sh"]
 
