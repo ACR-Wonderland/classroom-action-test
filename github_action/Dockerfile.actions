@@ -7,8 +7,8 @@ ENV PYTHONUNBUFFERED=1
 # 4. Set the working directory for the rest of the build
 WORKDIR /app
 
-# 5. Copy the rest of your application code
-COPY . . 
+# 5. Copy all files/folders from the build context into /app
+COPY . /app
 
 RUN ls -a
 
