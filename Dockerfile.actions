@@ -13,7 +13,7 @@ COPY . .
 RUN ls -a
 
 # 7. Install Python dependencies from the available requirements file
-RUN pip install --no-cache-dir -r /github_action/requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
 # 8. Make the repository entrypoint executable
 RUN chmod +x /github_action/entrypoint.sh
