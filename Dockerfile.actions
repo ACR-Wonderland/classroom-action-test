@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # 5. Copy the rest of your application code
-COPY .. . 
+COPY . . 
 
 RUN ls -a
 
