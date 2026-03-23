@@ -15,17 +15,24 @@ RUN apt-get update && \
 # 4. Set the working directory for the rest of the build
 WORKDIR /app
 
-# 5. Copy and install Python dependencies first to leverage caching
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 6. Copy the rest of your application code
+# 5. Copy the rest of your application code
 COPY . .
 
-# 8. Copy the entrypoint and make it executable
-COPY github_action/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# 6. Install Python dependencies from the available requirements file
+RUN if [ -f /app/requirements.txt ]; then \
+            echo "Achou em /app" >&2; \
+            pip install --no-cache-dir -r /app/requirements.txt; \
+        elif [ -f /app/github_action/requirements.txt ]; then \
+            echo "Achou em /app/github_action" >&2; \
+            pip install --no-cache-dir -r /app/github_action/requirements.txt; \
+        else \
+            echo "Error: requirements.txt not found in /app or /app/github_action" >&2; \
+            exit 1; \
+        fi
+
+# 8. Make the repository entrypoint executable
+RUN chmod +x /app/github_action/entrypoint.sh
 
 # 9. Set the entrypoint for the container
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/github_action/entrypoint.sh"]
 
