@@ -17,6 +17,7 @@ RUN apt-get update && \
 
 # 5. Copy the rest of your application code
 # COPY . .
+RUN  ls
 
 # 6. Install Python dependencies from the available requirements file
 RUN  pip install --no-cache-dir -r /requirements.txt
