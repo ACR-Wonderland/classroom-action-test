@@ -16,8 +16,8 @@ RUN apt-get update && \
 WORKDIR /app
 
 # 5. Copy the rest of your application code
-COPY . /github_action
-COPY . /autograder
+COPY /github_action . 
+COPY /autograder . 
 
 RUN ls -a
 
