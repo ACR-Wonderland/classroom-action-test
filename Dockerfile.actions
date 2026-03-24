@@ -10,11 +10,15 @@ RUN apt-get update && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
+RUN ls -a
+
 # 4. Set the working directory for the rest of the build
 WORKDIR /app
 
 # 5. Copy the rest of your application code
 COPY . . 
+
+RUN ls -a
 
 # 6. Install Python dependencies from the available requirements file
 RUN pip install --no-cache-dir -r requirements.txt
