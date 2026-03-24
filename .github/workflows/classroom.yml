@@ -17,8 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run classroom action
-        uses: ./
-        with:
-          template-preset: "python"
+      - name: Run Autograder
+        uses: webtech-network/autograder@bufix/241-GitHub_Module
+        with: 
+          template_preset : "webdev"
           feedback-type: "default"
+          openai_key: ${{ secrets.ENGINE }}
+          redis_url: ${{ secrets.REDIS_URL }}
+          redis_token: ${{ secrets.REDIS_NAME }}
